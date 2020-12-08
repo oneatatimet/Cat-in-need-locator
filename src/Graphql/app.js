@@ -1,6 +1,8 @@
 const express = require('express');
 const { gql, ApolloServer } = require('apollo-server-express');
 const http = require('http');
+const middleware = require('../middleware/middleware');
+
 const users = require('./resolvers/users');
 
 const app = express();
@@ -20,6 +22,12 @@ const server = new ApolloServer({
 	playground: true, // enables the actual playground in production
 	typeDefs,
 	resolvers,
+	async context({ req, connection }) {
+		req = await middleware(req);
+		return {
+			request: req,
+		};
+	},
 });
 
 server.applyMiddleware({ app, path: '/' });
