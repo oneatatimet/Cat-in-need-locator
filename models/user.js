@@ -22,11 +22,16 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING,
 				allowNull: false,
 			},
-			passwrod: { type: DataTypes.STRING, allowNull: false },
-			token: DataTypes.VIRTUAL,
+			password: { type: DataTypes.STRING, allowNull: false },
+			roleId: {
+				type: DataTypes.INTEGER,
+				defaultValue: 2,
+			},
 		},
+
 		{
 			sequelize,
+			tableName: 'users',
 			modelName: 'User',
 		}
 	);
