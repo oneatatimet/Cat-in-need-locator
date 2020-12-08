@@ -22,6 +22,11 @@ let userService = {
 			throw new Error('A user with this email already exists');
 		}
 	},
+	getUsers: async (args) => {
+		let users = await models.User.findAll();
+		console.log('userss', users);
+		return users;
+	},
 };
 
 module.exports = userService;
