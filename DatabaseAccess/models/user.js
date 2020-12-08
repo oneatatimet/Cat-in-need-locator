@@ -1,16 +1,9 @@
-//created the model using cli command
 'use strict';
-const { Model } = require('sequelize');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 module.exports = (sequelize, DataTypes) => {
 	const User = sequelize.define(
 		'User',
-		/**
-		 * Helper method for defining associations.
-		 * This method is not a part of Sequelize lifecycle.
-		 * The `models/index` file will call this method automatically.
-		 */
-
 		{
 			name: {
 				type: DataTypes.STRING,
@@ -19,8 +12,17 @@ module.exports = (sequelize, DataTypes) => {
 			email: {
 				type: DataTypes.STRING,
 				allowNull: false,
+				validate: {
+					isEmail: true,
+				},
 			},
-			password: { type: DataTypes.STRING, allowNull: false },
+			password: {
+				type: DataTypes.STRING,
+				set: function (val) {
+					this.setDataValue('password', bcrypt.hashSync(val, 12));
+				},
+				validate: {},
+			},
 			roleId: {
 				type: DataTypes.INTEGER,
 				defaultValue: 2,
@@ -43,5 +45,10 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		{}
 	);
+	User.associate = function (models) {
+		// User.hasMany(models.Connection, {
+		//   foreignKey: "userId",
+		// });
+	};
 	return User;
 };
