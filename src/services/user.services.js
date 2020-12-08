@@ -45,6 +45,36 @@ let userService = {
 			throw new Error('No user with that email');
 		}
 	},
+	changePassword: async (args) => {
+		const { userId, currentPassword, newPassword } = args;
+		try {
+			let user = await models.User.findOne({
+				where: {
+					id: userId,
+				},
+			});
+			if (!user) {
+				throw new Error(' This user does not exist');
+			}
+			//compare passwords
+			const isMatch = bcrypt.compareSync(currentPassword, user.password);
+			if (!isMatch) {
+				throw new Error('Current password entered is incorrect');
+			}
+			user.password = newPassword;
+			return user.save().then((res) => 'Password update successful');
+		} catch (error) {
+			throw new Error(error.message);
+		}
+	},
+	deleteUserById: async (args) => {
+		await models.User.destroy({ where: { id: args.userId } });
+		return 'user deleted!';
+	},
+	updateUser: async (args) => {
+		await models.User.update({ ...args }, { where: { id: args.userId } });
+		return 'User updated successfully!';
+	},
 };
 
 module.exports = userService;
