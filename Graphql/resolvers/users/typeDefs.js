@@ -6,6 +6,10 @@ const typeDef = gql`
 	}
 	extend type Mutation {
 		createUser(name: String!, email: String!, password: String!, roleId: Int): String
+		updateUser: String
+		deleteUserById: String
+		login: String
+		changePassword: String
 	}
 	type User {
 		id: Int
@@ -14,4 +18,5 @@ const typeDef = gql`
 		roleId: Int
 	}
 `;
+
 module.exports = typeDef;
