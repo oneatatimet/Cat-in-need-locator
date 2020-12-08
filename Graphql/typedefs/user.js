@@ -1,15 +1,20 @@
-const { gql } = require('apollo-server-express');
+let gql = require('graphql-tag');
 export default gql`
-	extend type Query {
-		user(id: ID!): User
-		users: [User!]!
-	}
+extend type Query {
+    getUsers: [User]
+  }
 	extend type Mutation {
-		signUp(email: String, name: String): User
+		createUser(
+            name: String!
+            email: String!
+            password: String!
+            roleId: Int)
 	}
-	type user {
-		id: ID!
-		email: String!
-		name: String!
-	}
+	type User {
+        id: Int
+        name: String
+        email: String
+        roleId: Int
+      }
 `;
+module.exports = typeDef;
