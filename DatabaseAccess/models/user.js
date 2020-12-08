@@ -1,6 +1,7 @@
 //created the model using cli command
 'use strict';
 const { Model } = require('sequelize');
+const jwt = require('jsonwebtoken');
 module.exports = (sequelize, DataTypes) => {
 	class User extends Model {
 		/**
@@ -30,6 +31,21 @@ module.exports = (sequelize, DataTypes) => {
 			roleId: {
 				type: DataTypes.INTEGER,
 				defaultValue: 2,
+			},
+			token: {
+				type: DataTypes.VIRTUAL,
+				get: function () {
+					return jwt.sign(
+						{
+							id: this.id,
+							name: this.name,
+							email: this.email,
+							roleId: this.roleId,
+							id: this.id,
+						},
+						process.env.JWTSK
+					);
+				},
 			},
 		},
 		{
