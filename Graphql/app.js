@@ -1,11 +1,20 @@
 const express = require('express');
 const { gql, ApolloServer } = require('apollo-server-express');
-import typeDefs from './resolvers';
-import resolvers from './typedefs';
+const http = require('http');
+const users = require('./resolvers/users');
 
 const app = express();
 const port = process.env.PORT || 5000;
 console.log('port:', port);
+
+const typeDef = gql`
+	type Query
+	type Mutation
+`;
+
+const resolvers = [users.resolvers];
+
+const typeDefs = [typeDef, users.typeDef];
 
 const server = new ApolloServer({
 	playground: true, // enables the actual playground in production
@@ -13,10 +22,12 @@ const server = new ApolloServer({
 	resolvers,
 });
 
-server.applyMiddleware({ app });
+server.applyMiddleware({ app, path: '/' });
 
-app.listen(port, () => {
-	console.log(`🚀 Server ready at http://localhost:${port}`);
+const httpServer = http.createServer(app);
+
+httpServer.listen(port, () => {
+	console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`);
 });
 
 // app.use(express.json());

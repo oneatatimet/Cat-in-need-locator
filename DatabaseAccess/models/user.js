@@ -3,22 +3,15 @@
 const { Model } = require('sequelize');
 const jwt = require('jsonwebtoken');
 module.exports = (sequelize, DataTypes) => {
-	class User extends Model {
+	const User = sequelize.define(
+		'User',
 		/**
 		 * Helper method for defining associations.
 		 * This method is not a part of Sequelize lifecycle.
 		 * The `models/index` file will call this method automatically.
 		 */
-		static associate(models) {
-			// define association here
-		}
-	}
-	User.init(
+
 		{
-			uuid: {
-				type: DataTypes.UUID,
-				defaultValue: DataTypes.UUIDV4,
-			},
 			name: {
 				type: DataTypes.STRING,
 				allowNull: false,
@@ -48,11 +41,7 @@ module.exports = (sequelize, DataTypes) => {
 				},
 			},
 		},
-		{
-			sequelize,
-			tableName: 'users',
-			modelName: 'User',
-		}
+		{}
 	);
 	return User;
 };
