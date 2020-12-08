@@ -7,10 +7,14 @@ import { ApolloClient, InMemoryCache, gql, ApolloProvider, HttpLink } from '@apo
 const devBackendUrl = 'http://localhost:5080'; // Dev Mode
 const prodBackendUrl = '/'; // Production mode
 
+let token = localStorage.getItem('authToken');
 const client = new ApolloClient({
 	cache: new InMemoryCache(),
 	link: new HttpLink({
 		uri: devBackendUrl,
+		headers: {
+			authorization: token ? token : null,
+		},
 	}),
 });
 

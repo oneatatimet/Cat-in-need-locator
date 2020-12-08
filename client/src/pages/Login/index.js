@@ -62,6 +62,33 @@ export default function SignIn(props) {
 	const [error, setError] = useState();
 	const [login, { loading, error: graphQlError, data }] = useMutation(LOGIN);
 
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			await login({
+				variables: {
+					email: email,
+					password: password,
+				},
+			})
+				.then((res) => {
+					if (res.data.login) {
+						let token = res.data.login.token;
+						localStorage.setItem('authToken', token);
+						console.log('here is the problem', token);
+						let currentUser = jwt.verify(token, 'secret');
+						localStorage.setItem('currentUser', JSON.stringify(currentUser));
+						// props.history.push('/dashboard')
+					}
+				})
+				.catch((e) => {
+					console.log(e);
+				});
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
 	return (
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
@@ -72,13 +99,14 @@ export default function SignIn(props) {
 				<Typography component="h1" variant="h5">
 					Log in
 				</Typography>
-				<form className={classes.form}>
+				<form className={classes.form} onSubmit={handleSubmit}>
 					<TextField
 						variant="outlined"
 						margin="normal"
 						required
 						fullWidth
 						value={email}
+						onChange={(e) => setEmail(e.target.value)}
 						id="email"
 						label="Email Address"
 						name="email"
@@ -91,13 +119,17 @@ export default function SignIn(props) {
 						required
 						value={password}
 						fullWidth
+						onChange={(e) => setPassword(e.target.value)}
 						name="password"
 						label="Password"
 						type="password"
 						id="password"
 						autoComplete="current-password"
 					/>
-					{}
+					{/* <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          /> */}
 					<Button
 						type="submit"
 						fullWidth
@@ -108,7 +140,9 @@ export default function SignIn(props) {
 						{loading ? 'Singing In' : 'Log In'}
 					</Button>
 					<Grid container>
-						{}
+						{/* <Grid item xs>
+             
+            </Grid> */}
 						<Grid item>
 							<Link
 								onClick={(e) => {
@@ -121,6 +155,15 @@ export default function SignIn(props) {
 								{"Don't have an account? Sign Up"}
 							</Link>
 						</Grid>
+					</Grid>
+					<Grid>
+						{graphQlError && (
+							<Alert severity="error">
+								{graphQlError.graphQLErrors.map(({ message }, i) => (
+									<span key={i}>{message}</span>
+								))}
+							</Alert>
+						)}
 					</Grid>
 				</form>
 			</div>
