@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
 							roleId: this.roleId,
 							id: this.id,
 						},
-						process.env.JWTSK
+						'' + process.env.JWT_KEY
 					);
 				},
 			},
