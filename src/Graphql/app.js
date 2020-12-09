@@ -2,8 +2,8 @@ const express = require('express');
 const { gql, ApolloServer } = require('apollo-server-express');
 const http = require('http');
 const middleware = require('../middleware/middleware');
-const http = require('http');
 const path = require('path');
+const { Client } = require('pg');
 
 const users = require('./resolvers/users');
 const animalFound = require('./resolvers/animalFound');
