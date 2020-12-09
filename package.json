@@ -4,7 +4,10 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"server": "nodemon src/Graphql/app.js",
+		"client": "npm start --prefix client",
+		"dev": "concurrently  \"npm run server\" \"npm run client\""
 	},
 	"repository": {
 		"type": "git",
@@ -13,26 +16,27 @@
 	"author": "Nada",
 	"license": "ISC",
 	"dependencies": {
+		"@types/sequelize": "^4.28.9",
 		"apollo-server-express": "^2.20.0",
+		"axios": "^0.21.0",
 		"bcrypt": "^5.0.0",
 		"bcryptjs": "^2.4.3",
+		"bluebird": "^3.7.2",
+		"concurrently": "^5.3.0",
 		"dotenv": "^8.2.0",
 		"esm": "^3.2.25",
 		"express": "^4.17.1",
 		"graphql": "^15.5.0",
 		"graphql-tag": "^2.11.0",
+		"graphql-upload": "^11.0.0",
 		"jsonwebtoken": "^8.5.1",
 		"nodemon": "^2.0.7",
 		"pg": "^8.5.1",
 		"pg-hstore": "^2.3.3",
-		"sequelize": "^6.5.0",
-		"uuid": "^8.3.2",
 		"react-apollo-hooks": "^0.5.0",
-		"@types/sequelize": "^4.28.9",
-		"axios": "^0.21.0",
-		"bluebird": "^3.7.2",
-		"graphql-upload": "^11.0.0",
-		"react-router-dom": "^5.2.0"
+		"react-router-dom": "^5.2.0",
+		"sequelize": "^6.5.0",
+		"uuid": "^8.3.2"
 	},
 	"bugs": {
 		"url": "https://github.com/oneatatimet/Cat-in-need-locator/issues"

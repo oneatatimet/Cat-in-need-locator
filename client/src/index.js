@@ -4,10 +4,10 @@ import './index.css';
 import App from './App';
 import { ApolloClient, InMemoryCache, gql, ApolloProvider, HttpLink } from '@apollo/client';
 
-const devBackendUrl = 'http://localhost:5080'; // Dev Mode
+let token = localStorage.getItem('authToken');
+const devBackendUrl = 'http://localhost:5000'; // Dev Mode
 const prodBackendUrl = '/'; // Production mode
 
-let token = localStorage.getItem('authToken');
 const client = new ApolloClient({
 	cache: new InMemoryCache(),
 	link: new HttpLink({

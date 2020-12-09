@@ -79,6 +79,9 @@ export default function SignIn(props) {
 						let currentUser = jwt.verify(token, 'secret');
 						localStorage.setItem('currentUser', JSON.stringify(currentUser));
 						// props.history.push('/dashboard')
+						if (currentUser.roleId === 2) {
+							window.location.replace('/Dashboard');
+						}
 					}
 				})
 				.catch((e) => {
