@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import MapMarker from '../MapMarker';
 
-require('dotenv').config();
 class GoogleMap extends Component {
 	static defaultProps = {
 		center: {
-			lat: 34.6,
-			lng: 135.53,
+			lat: 34.73,
+			lng: 135.431,
 		},
-		zoom: 10,
+		zoom: 15,
 	};
 
 	render() {
+		const { animalsFoundList, userLat, userLng } = this.props;
 		return (
 			// Important! Always set the container height explicitly
 			<div style={{ height: '80vh', width: '100%' }}>
@@ -20,7 +21,12 @@ class GoogleMap extends Component {
 					defaultCenter={this.props.center}
 					defaultZoom={15}
 					yesIWantToUseGoogleMapApiInternals
-				></GoogleMapReact>
+				>
+					{animalsFoundList &&
+						animalsFoundList.length &&
+						animalsFoundList.map((item) => <MapMarker lat={item.lat} lng={item.lng} />)}
+					<MapMarker position={{ lat: userLat, lng: userLng }} />
+				</GoogleMapReact>
 			</div>
 		);
 	}

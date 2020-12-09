@@ -1,4 +1,4 @@
-const models = require('../DatabaseAccess/models');
+const models = require('../DatabaseAccess/models/index');
 const bcrypt = require('bcryptjs');
 const { v4: uuid } = require('uuid');
 
