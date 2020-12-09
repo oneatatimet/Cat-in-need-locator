@@ -1,11 +1,14 @@
 # Animals in need
 
-Animal in need locator allows users to share the location of animals in need they might find anywhere using google places where a cat head emoji is placed on google maps. Users can then find the animal in need location on the map.
+Animals in need locator allows users to share the location of animals in need they might find anywhere using google places where a cat head emoji is placed on google maps. Users can then find the animal in need location on the map.
+
+# Demo
+
 https://animalsinneedlocator.herokuapp.com/
 
 ## Motivation
 
-People find volunrable animals all te times but in many cases they dont know what to do or how to reach out for help. This app is a MVP(minimum viable product) and can serve the purpose better with added feautres.
+People find volunrable animals all te times but in many cases they dont know what to do or how to reach out for help, the app allows animal lovers and organizations to find animals in need posted by users. This app is an MVP(minimum viable product) and can serve the purpose better with added feautres.
 
 ## Features
 
