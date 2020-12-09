@@ -34,7 +34,7 @@ const server = new ApolloServer({
 });
 
 const client = new Client({
-	connectionString: process.env.HEROKU_POSTGRESQL_AQUA_URL,
+	connectionString: process.env.DATABASE_URL,
 	ssl: {
 		rejectUnauthorized: false,
 	},
