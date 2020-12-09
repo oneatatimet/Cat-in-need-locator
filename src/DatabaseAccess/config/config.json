@@ -3,7 +3,7 @@
 		"username": "",
 		"password": "",
 		"database": "",
-		"host": "127.0.0.1",
+		"host": "",
 		"dialect": "postgres",
 		"operatorsAliases": false
 	},
@@ -16,7 +16,7 @@
 		"operatorsAliases": false
 	},
 	"production": {
-		"use_env_variable": "DATABASE_URL",
+		"use_env_variable": "HEROKU_POSTGRESQL_AQUA_URL",
 		"dialect": "postgres"
 	}
 }
