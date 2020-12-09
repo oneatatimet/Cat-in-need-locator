@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import Sider from '../../components/Sider';
 import Box from '@material-ui/core/Box';
 import GoogleMap from '../../components/GoogleMap';
+import AnimalFoundForm from '../../components/AnimalFoundForm';
 
 function Copyright() {
 	return (
@@ -24,10 +25,11 @@ export default function Dashboard(props) {
 		<div>
 			<Header />
 			<Sider />
+			<AnimalFoundForm />
+			<GoogleMap />
 			<Box mt={8}>
 				<Copyright />
 			</Box>
-			<GoogleMap />
 		</div>
 	);
 }
