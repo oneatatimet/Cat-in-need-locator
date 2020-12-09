@@ -1,0 +1,20 @@
+.settingsWrapper {
+  width: 100%;
+  height: auto;
+  padding: 2rem;
+  display: flex;
+
+  .settingsLeft {
+    max-width: 25%;
+    flex: 1;
+    min-height: 15rem;
+    margin: 5px;
+    padding-bottom: 2rem;
+  }
+  .settingsRight {
+    flex: 3;
+    min-height: 15rem;
+    margin: 5px;
+    padding-bottom: 2rem;
+  }
+}
