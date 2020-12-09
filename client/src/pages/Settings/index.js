@@ -7,6 +7,7 @@ import Header from '../../components/Header';
 import Sider from '../../components/Sider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import ChangePasswordForm from '../../components/ChangePasswordForm';
 
 const drawerWidth = 240;
 
@@ -64,7 +65,9 @@ export default function Settings(props) {
 							</ListItem>
 						</List>
 					</Paper>
-					<Paper elevation={3} className={'settingsRight'}></Paper>
+					<Paper elevation={3} className={'settingsRight'}>
+						{<ChangePasswordForm />}
+					</Paper>
 				</div>
 			</main>
 		</div>
