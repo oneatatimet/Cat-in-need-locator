@@ -6,7 +6,7 @@ const path = require('path');
 const { Client } = require('pg');
 
 const users = require('./resolvers/users');
-const animalFound = require('./resolvers/animalfound');
+const animalFound = require('./resolvers/animalFound');
 
 const app = express();
 const port = process.env.PORT || 5080;
