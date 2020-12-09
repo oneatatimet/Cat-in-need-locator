@@ -20,7 +20,8 @@
 		"@material-ui/lab": "^4.0.0-alpha.56",
 		"node-sass": "^4.14.1",
 		"google-map-react": "^2.1.9",
-		"react-places-autocomplete": "^7.3.0"
+		"react-places-autocomplete": "^7.3.0",
+		"dotenv": "^8.2.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
