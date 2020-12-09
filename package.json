@@ -7,7 +7,9 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"server": "nodemon src/Graphql/app.js",
 		"client": "npm start --prefix client",
-		"dev": "concurrently  \"npm run server\" \"npm run client\""
+		"dev": "concurrently  \"npm run server\" \"npm run client\"",
+		"refreshdb": "sequelize-cli db:migrate:undo:all && sequelize-cli db:migrate && sequelize-cli db:seed:all",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm --prefix client install && npm --prefix client run build "
 	},
 	"repository": {
 		"type": "git",
@@ -37,6 +39,10 @@
 		"react-router-dom": "^5.2.0",
 		"sequelize": "^6.5.0",
 		"uuid": "^8.3.2"
+	},
+	"engines": {
+		"node": "12.18.3",
+		"npm": "6.14.6"
 	},
 	"bugs": {
 		"url": "https://github.com/oneatatimet/Cat-in-need-locator/issues"

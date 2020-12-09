@@ -2,6 +2,8 @@ const express = require('express');
 const { gql, ApolloServer } = require('apollo-server-express');
 const http = require('http');
 const middleware = require('../middleware/middleware');
+const http = require('http');
+const path = require('path');
 
 const users = require('./resolvers/users');
 const animalFound = require('./resolvers/animalFound');
@@ -30,6 +32,22 @@ const server = new ApolloServer({
 		};
 	},
 });
+
+const client = new Client({
+	connectionString: process.env.DATABASE_URL,
+	ssl: {
+		rejectUnauthorized: false,
+	},
+});
+
+client.connect();
+if (process.env.NODE_ENV == 'production') {
+	let rootPath = path.resolve('client/build');
+	app.use(express.static(rootPath));
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(rootPath, 'index.html'));
+	});
+}
 
 server.applyMiddleware({ app, path: '/' });
 
