@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import { gql } from '@apollo/client';
 import PlacesAutoComplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Checkbox, FormControlLabel } from '@material-ui/core';

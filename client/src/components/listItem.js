@@ -10,12 +10,12 @@ export const MainListItems = ({ currPage }) => {
 	return (
 		<div style={{ padding: '2rem 0' }}>
 			<Link to="settings" style={{ color: 'grey', textDecoration: 'none' }}>
-				<ListItem button selected={currPage == 'settings'}>
+				<ListItem button selected={currPage === 'settings'}>
 					<ListItemIcon>
-						<SettingsIcon color={currPage == 'settings' ? 'primary' : ' secondary'} />
+						<SettingsIcon color={currPage === 'settings' ? 'primary' : ' secondary'} />
 					</ListItemIcon>
 					<ListItemText color="primary">
-						<Typography color={currPage == 'settings' ? 'primary' : 'textSecondary'}>
+						<Typography color={currPage === 'settings' ? 'primary' : 'textSecondary'}>
 							Settings
 						</Typography>
 					</ListItemText>

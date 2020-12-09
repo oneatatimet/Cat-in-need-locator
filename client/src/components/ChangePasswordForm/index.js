@@ -8,8 +8,7 @@ import Container from '@material-ui/core/Container';
 import Alert from '@material-ui/lab/Alert';
 import Grid from '@material-ui/core/Grid';
 
-import { gql, useMutation, apolloClient } from '@apollo/client';
-import jwt from 'jsonwebtoken';
+import { gql, useMutation } from '@apollo/client';
 
 const CHANGE_PASSWORD = gql`
 	mutation changePassword($userId: Int!, $currentPassword: String!, $newPassword: String!) {
@@ -37,8 +36,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ChangePasswordForm() {
 	const [currentPassword, setCurrentPassword] = useState();
 	const [newPassword, setNewPassword] = useState();
-	const [confirmPassword, setConfirmPassword] = useState();
-	const [changePassword, { loading, error: graphQlError, data }] = useMutation(CHANGE_PASSWORD);
+	const [changePassword, { error: graphQlError, data }] = useMutation(CHANGE_PASSWORD);
 
 	const classes = useStyles();
 

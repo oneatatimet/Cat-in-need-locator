@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Alert from '@material-ui/lab/Alert';
-import { gql, useMutation, apolloClient } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import jwt from 'jsonwebtoken';
 
 function Copyright() {
@@ -59,8 +59,7 @@ export default function SignIn(props) {
 	const [email, setEmail] = useState();
 	const classes = useStyles();
 	const [password, setPassword] = useState();
-	const [error, setError] = useState();
-	const [login, { loading, error: graphQlError, data }] = useMutation(LOGIN);
+	const [login, { loading, error: graphQlError }] = useMutation(LOGIN);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();

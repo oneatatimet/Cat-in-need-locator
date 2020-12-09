@@ -9,8 +9,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ChangePasswordForm from '../../components/ChangePasswordForm';
 
-const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',

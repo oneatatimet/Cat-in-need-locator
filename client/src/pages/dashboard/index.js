@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Header from '../../components/Header';
 import Sider from '../../components/Sider';
@@ -12,6 +12,7 @@ import Link from '@material-ui/core/Link';
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { Paper } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
+import Box from '@material-ui/core/Box';
 
 function Copyright() {
 	return (
@@ -88,12 +89,8 @@ export default function Dashboard(props) {
 	const [userLat, setUserLat] = useState('');
 	const [userLng, setUserLng] = useState('');
 
-	const [createAnimalFound, { loading, error: graphQlError, data }] = useMutation(
-		CREATE_ANIMAL_FOUND
-	);
-	const { loading: loadingAnimals, error: getAnimalsError, data: animalsData } = useQuery(
-		GET_ANIMALS_FOUND
-	);
+	const [createAnimalFound, { error: graphQlError, data }] = useMutation(CREATE_ANIMAL_FOUND);
+	const { data: animalsData } = useQuery(GET_ANIMALS_FOUND);
 
 	const submitAnimalForm = async (values) => {
 		try {
@@ -127,12 +124,12 @@ export default function Dashboard(props) {
 		setOpen(false);
 	};
 
-	const setCurrentUserLocation = () => {
-		navigator.geolocation.getCurrentPosition(function (position) {
-			setUserLat(position.coords.latitude);
-			setUserLng(position.coords.longitude);
-		});
-	};
+	// const setCurrentUserLocation = () => {
+	// 	navigator.geolocation.getCurrentPosition(function (position) {
+	// 		setUserLat(position.coords.latitude);
+	// 		setUserLng(position.coords.longitude);
+	// 	});
+	// };
 
 	console.log('animals data', animalsData);
 
@@ -173,6 +170,9 @@ export default function Dashboard(props) {
 							)}
 						</Grid>
 					</Grid>
+					<Box mt={5}>
+						<Copyright />
+					</Box>
 				</Container>
 			</main>
 		</div>

@@ -3,8 +3,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -13,7 +11,7 @@ import HowToRegOutlined from '@material-ui/icons/HowToRegOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { gql, useMutation, apolloClient } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import Snackbar from '@material-ui/core/Snackbar';
 
 function Copyright() {
@@ -70,7 +68,7 @@ export default function SignUp(props) {
 
 		setOpen(false);
 	};
-	const [createUser, { loading, error: graphQlError, data }] = useMutation(CREATE_USER);
+	const [createUser, { error: graphQlError }] = useMutation(CREATE_USER);
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const { history } = props;
