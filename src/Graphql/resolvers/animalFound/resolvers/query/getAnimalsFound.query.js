@@ -1,4 +1,4 @@
-const userService = require('../../../../../services/animalFound.service');
+const animalFoundService = require('../../../../../services/animalFound.service');
 
 const getAnimalsFound = async (parent, args) => {
 	let newUser = await animalFoundService.getAnimalsFound(args);
