@@ -1,23 +1,29 @@
-import React, { useState, useEffect, Component } from 'react';
-import Typography from '@material-ui/core/Typography';
+import React, { useState } from 'react';
 import Link from '@material-ui/core/Link';
-import Header from '../../components/Header';
-
-function Copyright() {
-	return (
-		<Typography variant="body2" color="textSecondary" align="center">
-			{'Copyright © '}
-			<Link color="inherit" href="https://material-ui.com/">
-				Your Website
-			</Link>{' '}
-			{new Date().getFullYear()}
-			{'.'}
-		</Typography>
-	);
-}
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
 export default function Dashboard(props) {
-	const submitAnimalForm = async (values) => {};
+	function Copyright() {
+		return (
+			<Typography variant="body2" color="textSecondary" align="center">
+				{'Copyright © '}
+				<Link color="inherit" href="https://material-ui.com/">
+					Your Website
+				</Link>{' '}
+				{new Date().getFullYear()}
+				{'.'}
+			</Typography>
+		);
+	}
 
-	return <Header />;
+	return (
+		<div>
+			<h1>Dashboard</h1>
+			<Box mt={8}>
+				<Copyright />
+			</Box>
+		</div>
+	);
 }
