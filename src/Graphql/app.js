@@ -4,6 +4,7 @@ const http = require('http');
 const middleware = require('../middleware/middleware');
 
 const users = require('./resolvers/users');
+const animalFound = require('./resolvers/animalFound');
 
 const app = express();
 const port = process.env.PORT || 5080;
@@ -14,9 +15,9 @@ const typeDef = gql`
 	type Mutation
 `;
 
-const resolvers = [users.resolvers];
+const resolvers = [users.resolvers, animalFound.resolvers];
 
-const typeDefs = [typeDef, users.typeDef];
+const typeDefs = [typeDef, users.typeDef, animalFound.typeDef];
 
 const server = new ApolloServer({
 	playground: true, // enables the actual playground in production
