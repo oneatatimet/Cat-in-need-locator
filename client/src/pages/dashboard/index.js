@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Header from '../../components/Header';
+import Sider from '../../components/Sider';
 import Box from '@material-ui/core/Box';
 
 function Copyright() {
@@ -21,6 +22,7 @@ export default function Dashboard(props) {
 	return (
 		<div>
 			<Header />
+			<Sider />
 			<Box mt={8}>
 				<Copyright />
 			</Box>
