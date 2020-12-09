@@ -11,7 +11,7 @@ const prodBackendUrl = '/'; // Production mode
 const client = new ApolloClient({
 	cache: new InMemoryCache(),
 	link: new HttpLink({
-		uri: devBackendUrl,
+		uri: prodBackendUrl,
 		headers: {
 			authorization: token ? token : null,
 		},
